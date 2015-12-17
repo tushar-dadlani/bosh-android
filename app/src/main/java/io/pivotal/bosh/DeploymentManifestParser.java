@@ -23,19 +23,24 @@ public class DeploymentManifestParser {
         Log.d("ManifestParser", manifestMap.toString());
     }
 
-    public HashMap<String, String> getJobInstances() {
+    public HashMap<String, Integer> getJobInstances() {
 
         ArrayList<Object> jobs = (ArrayList<Object>) manifestMap.get("jobs");
         ListIterator<Object> jobIterator =  jobs.listIterator();
-        HashMap<String, String> jobInstance = new HashMap<>();
+        HashMap<String, Integer> jobInstances = new HashMap<>();
         while(jobIterator.hasNext()) {
             Object job = jobIterator.next();
-            HashMap<String, String> jobHash = (HashMap<String,String>)job;
+            Log.d("jobObj", job.toString());
+            Map<String, Object> jobMap = (Map<String, Object>) job;
 
-            jobInstance.put(jobHash.get("name"), jobHash.get("instances"));
+            String jobName = (String)jobMap.get("name");
+            Integer instances = (Integer)jobMap.get("instances");
+
+            jobInstances.put(jobName, instances);
+
         }
-
-        return jobInstance;
+        Log.d("JobInstances", jobInstances.toString());
+        return jobInstances;
 
     }
 }

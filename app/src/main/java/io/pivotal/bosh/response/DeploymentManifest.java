@@ -17,7 +17,7 @@ public class DeploymentManifest implements Serializable{
     public String manifest;
 
 
-    public String updateJobs(HashMap<String, String> jobs) {
+    public String updateJobs(HashMap<String, Integer> jobs) {
         Yaml yaml = new Yaml();
         Map<String, Object> deploymentManifest = (Map<String, Object>) yaml.load(manifest);
 
@@ -30,13 +30,11 @@ public class DeploymentManifest implements Serializable{
         ArrayList<Object> newManifestJobs = new ArrayList<Object>();
         while(jobIterator.hasNext()) {
 
-            HashMap<String, String> jobObject;
-            jobObject = (HashMap<String, String>)  jobIterator.next();
-            jobObject.put("instances", jobs.get(jobObject.get("name")));
+            Map<String, Object> manifestJobMap = (Map<String, Object>) jobIterator.next();
+            manifestJobMap.put("instances", jobs.get(manifestJobMap.get("name")));
 
-            Log.d("JobObject", jobObject.toString());
 
-            newManifestJobs.add(jobObject);
+            newManifestJobs.add(manifestJobMap);
         }
 
         deploymentManifest.put("jobs", newManifestJobs);

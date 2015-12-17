@@ -30,6 +30,7 @@ dependencies {
     compile 'com.squareup.okio:okio:1.0.1'
     compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
     compile 'org.yaml:snakeyaml:1.16'
+    compile 'com.squareup.okio:okio:1.6.0'
 
 
 // Unit testing dependencies

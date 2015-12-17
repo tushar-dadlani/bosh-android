@@ -16,14 +16,14 @@ import java.util.HashMap;
  */
 public class HashMapAdapter extends BaseAdapter {
 
-    private HashMap<String, String> mData = new HashMap<String, String>();
+    private HashMap<String, Integer> mData = new HashMap<String, Integer>();
     private String[] mKeys;
 
 
     private Context context;
 
     // the context is needed to inflate views in getView()
-    public HashMapAdapter(Context context, HashMap<String, String> data) {
+    public HashMapAdapter(Context context, HashMap<String, Integer> data) {
         this.context = context;
         mData  = data;
         mKeys = mData.keySet().toArray(new String[data.size()]);
@@ -42,7 +42,7 @@ public class HashMapAdapter extends BaseAdapter {
     }
 
 
-    public void setItem(int position, String value) {
+    public void setItem(int position, Integer value) {
          mData.put(mKeys[position],value);
     }
 
@@ -89,59 +89,38 @@ public class HashMapAdapter extends BaseAdapter {
         increment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                TextView curentInstanceCount = (TextView) view.findViewById(R.id.instance_count);
-//                String currentCount = curentInstanceCount.getText().toString();
-//                Integer newCount = Integer.getInteger(currentCount) + 1;
-//                curentInstanceCount.setText(newCount.toString());
 
 
                 Log.d("Clicked", "+ was clicked");
                 Log.d("Items", mData.toString());
                 Log.d("Position", Integer.toString(pos));
                 Log.d("getValue", getItem(pos).toString());
-
-                int newCount = Integer.parseInt(getItem(pos).toString()) + 1;
-                setItem(pos, Integer.toString(newCount));
-
-
+                int newCount = (Integer)getItem(pos) + 1;
+                setItem(pos, newCount);
                 Log.d("postSetValue", getItem(pos).toString());
-
-
                 notifyDataSetChanged();
-
-
             }
         });
 
         decrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                TextView curentInstanceCount = (TextView) view.findViewById(R.id.instance_count);
-//                String currentCount = curentInstanceCount.getText().toString();
-//                Integer newCount = Integer.getInteger(currentCount) - 1;
-//                curentInstanceCount.setText(newCount.toString());
+
                 Log.d("Clicked","- was clicked");
-
-
                 Log.d("Items",mData.toString());
                 Log.d("Position", Integer.toString(pos));
                 Log.d("getValue", getItem(pos).toString());
 
-                int newCount = Integer.parseInt(getItem(pos).toString()) - 1;
+                int newCount = (Integer)getItem(pos) - 1;
                 if (newCount > 0) {
-                    setItem(pos, Integer.toString(newCount));
+                    setItem(pos, newCount);
                 }
                 else {
-                    setItem(pos, Integer.toString(0));
+                    setItem(pos, 0);
                 }
 
-
                 Log.d("postSetValue", getItem(pos).toString());
-
-
                 notifyDataSetChanged();
-
-
             }
         });
         return v;
