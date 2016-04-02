@@ -61,7 +61,7 @@ public class HttpHelpers {
             okHttpClient.interceptors().add(new Interceptor() {
                 @Override
                 public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
-                    String credentials = "admin:stage4cloud";
+                    String credentials = "admin:ozGVqVPoKN61";
 
                     //String credentials = "admin:admin";
                     // create Base64 encodet string

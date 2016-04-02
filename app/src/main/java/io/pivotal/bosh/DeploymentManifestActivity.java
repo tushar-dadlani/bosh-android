@@ -1,8 +1,8 @@
 package io.pivotal.bosh;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +21,7 @@ import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class DeploymentManifestActivity extends Activity {
+public class DeploymentManifestActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class DeploymentManifestActivity extends Activity {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .client(HttpHelpers.getUnsafeOkHttpClient())
-                .baseUrl("https://bosh.lakitu.cf-app.com:25555")
+                .baseUrl("https://bosh.walnut.cf-app.com:25555")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
