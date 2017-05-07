@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="@dimen/abc_text_size_body_2_material"
+        android:layout_alignParentLeft="true"
+
+        android:id="@+id/job_name"
+        android:textColor="#000000"
+        android:padding="20px" />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="50px"
+        android:id="@+id/instance_count"
+        android:layout_toLeftOf="@+id/increment"
+        android:clickable="false"
+        android:textIsSelectable="false"
+        android:visibility="visible"
+        android:ellipsize="middle"
+        android:enabled="false"
+        android:padding="20px"
+        android:textStyle="bold"
+        android:textColor="#000000" />
+
+    <Button android:layout_width="wrap_content"
+        android:id="@+id/increment"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="+"
+         />
+    <Button android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decrement"
+        android:layout_toLeftOf="@id/instance_count" />
+</RelativeLayout>
